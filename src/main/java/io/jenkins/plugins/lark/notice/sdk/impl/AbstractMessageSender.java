@@ -75,6 +75,7 @@ public abstract class AbstractMessageSender implements MessageSender {
      * @return A configured HttpRequest ready to be sent.
      */
     private HttpRequest createHttpRequest(RobotConfigModel robotConfig, String jsonBody, String[] headers) {
+        log.error("Sending Lark message: {}, url: {} ", jsonBody, robotConfig.getWebhook());
         HttpRequest.Builder builder = HttpRequest.newBuilder()
                 .uri(URI.create(robotConfig.getWebhook())).timeout(DEFAULT_TIMEOUT)
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)

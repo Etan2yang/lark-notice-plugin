@@ -4,6 +4,7 @@ import io.jenkins.plugins.lark.notice.model.RobotConfigModel;
 import io.jenkins.plugins.lark.notice.sdk.MessageSender;
 import io.jenkins.plugins.lark.notice.sdk.impl.DingMessageSender;
 import io.jenkins.plugins.lark.notice.sdk.impl.LarkMessageSender;
+import io.jenkins.plugins.lark.notice.sdk.impl.TGMessageSender;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.SneakyThrows;
@@ -38,6 +39,12 @@ public enum RobotType {
         @Override
         public MessageSender obtainInstance(RobotConfigModel robotConfig) {
             return new DingMessageSender(robotConfig);
+        }
+    },
+    TG("tg", "api.telegram.org", "text_tag") {
+        @Override
+        public MessageSender obtainInstance(RobotConfigModel robotConfig) {
+            return new TGMessageSender(robotConfig);
         }
     };
 
