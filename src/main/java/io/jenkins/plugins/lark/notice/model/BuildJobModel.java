@@ -106,7 +106,7 @@ public class BuildJobModel {
                 String.format("\uD83C\uDF1F **构建状态**:  <%s color='%s'>%s</%s>",
                         tagName, statusType.getColor(), statusType.getLabel(), tagName),
                 String.format("\uD83D\uDD50 **构建用时**:  %s", duration),
-                String.format("\uD83D\uDC64 **执  行 者** :  %s", executorName),
+//                String.format("\uD83D\uDC64 **执  行 者** :  %s", executorName),
                 content == null ? "" : content
         );
         return String.join(hasDingTask ? "  " + LF : LF, lines);

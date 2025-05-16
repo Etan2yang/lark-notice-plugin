@@ -53,6 +53,7 @@ public abstract class AbstractMessageSender implements MessageSender {
 
             SendResult sendResult = JsonUtils.readValue(response.body(), SendResult.class);
             Optional.ofNullable(sendResult).ifPresent(result -> result.setRequestBody(jsonBody));
+            log.error("Send result: {}", response);
             return sendResult;
         } catch (ConnectException e) {
             log.error("Connection refused or unable to establish: {}, Webhook URL: {}", e.getMessage(), robotConfig.getWebhook(), e);
